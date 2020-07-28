@@ -1,0 +1,35 @@
+*, 
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.container {
+    display: flexbox;
+    text-align: center;
+    margin: auto;
+    max-width: 60%;
+    height: 600px;
+    border: 30px double lightslategray;
+    background-color: lightcyan;
+    padding: 50px;
+    
+}
+
+.hide {
+    display: none;
+}
+
+#score {
+    text-align: right;
+    float: right;
+}
+
+#quiz-instructions {
+    font-weight: bold;
+}
+
+#highscore-display {
+    text-align: left;
+}
+
