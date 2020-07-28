@@ -14,7 +14,7 @@ var newForm = document.querySelector("#mainBody");
 var lastPage = document.querySelector("#last-page");
 var scoresList = document.querySelector("#scores-list");
 var viewHighscore = document.querySelector("#highscore-display");
-var score = 100;
+var score = 101;
 var countIncrement;
 var timer;
 var scoreAndInitialsArray = [];
@@ -43,7 +43,6 @@ function init() {
 
 // The following function is called when the Start Quiz button is clicked and displays the first question. 
 function quizStarts1() {
-
         startQuiz.classList.add("hide");
         quizInstructions.classList.add("hide");
         countIncrement = 0;
@@ -125,14 +124,17 @@ function zeroScore() {
         var createForm = document.createElement("form");
         console.log(createForm); 
         createForm.innerHTML = "Enter initials : ";
-        newForm.appendChild(createForm); 
+        newForm.appendChild(createForm);
         
         var createInputBox = document.createElement("input");
         createForm.appendChild(createInputBox);
+        createInputBox.style.padding = "5px";
 
         var submitBtn = document.createElement("button");
         submitBtn.innerText = "submit";
         submitBtn.style = "margin-left: 10px";
+        submitBtn.style.color = "green";
+        submitBtn.style.padding = "5px";
         createForm.appendChild(submitBtn);
 
 
@@ -156,6 +158,7 @@ function zeroScore() {
             questions.textContent = "HighScores";
             quizInstructions.classList.add("hide");
             createForm.classList.add("hide");
+            viewHighscore.classList.add("hide");
 
             renderHighscores();
 
@@ -190,6 +193,7 @@ function renderHighscores() {
     var button1 = document.createElement("button");
     button1.textContent = "Go Back";
     lastPage.appendChild(button1);
+    button1.style.padding = "5px";
     button1.addEventListener("click", function() {
         window.location.reload();
 
@@ -199,169 +203,50 @@ function renderHighscores() {
     button2.textContent = "Clear Highscores";
     lastPage.appendChild(button2);
     button2.style.marginLeft = "10px";
+    button2.style.padding = "5px";
     button2.addEventListener("click", function() {
         localStorage.setItem("highscores", null);
+        scoreAndInitialsArray =[];
         scoresList.classList.add("hide");
+        viewHighscore.classList.add("hide");
+
     })
 }
 
 
 
+
+startQuiz.addEventListener("click", quizStarts1);
+
 // This code displays the score on the upper right corner of the Quiz page and decrement its value every second and calls the "zeroScore" function when it is 0.
 startQuiz.addEventListener("click", function(){
-     timer = setInterval(() => {
-        score--;
-        scorePlaceholder.textContent = "Score: " + score; 
+    timer = setInterval(() => {
+       score--;
+       scorePlaceholder.textContent = "Score: " + score; 
 
-        if (score <= 0) {
-            zeroScore();
-        }
-    }, 1000);
-    
+       if (score <= 0) {
+           zeroScore();
+       }
+   }, 1000);
+   
 });
 
 
-startQuiz.addEventListener("click", quizStarts1);
 allButtons.addEventListener("click", quizStarts2);
 
 viewHighscore.addEventListener("click", function() {
+            event.preventDefault();
             questions.textContent = "HighScores";
             quizInstructions.classList.add("hide");
-            createForm.classList.add("hide");
-
             renderHighscores();
+            startQuiz.classList.add('hide');
+            allButtons.classList.add("hide");
+            clearInterval(timer);
+            scorePlaceholder.classList.add("hide");
+            viewHighscore.classList.add("hide");
+
+
 });
 
 
 
-
-
-
-
-
-
-
-
-
-// * when I click start quiz, it navigates to a new page with my first question.
-// * when I click on the start quiz, the new page will also display the time and highscore.
-// * this page will present me with question and 4 options.
-// * when i click on one of the option, it will display the result-right/wrong 
-
-// * when I choose the wrong option, the score decreases by 10.
-
-// * wait for 3 seconds and show the next page with new question.
-// * when the timer or the number of questions left reaches 0, the game is over.
-
-// * when the game is over then I can save my score and initials in the local Storage.
-
-
-
-
-// GIVEN I am taking a code quiz
-// WHEN I click the start button
-// THEN a timer starts and I am presented with a question
-// WHEN I answer a question
-// THEN I am presented with another question
-// WHEN I answer a question incorrectly
-// THEN time is subtracted from the clock
-// WHEN all questions are answered or the timer reaches 0
-// THEN the game is over
-// WHEN the game is over
-// THEN I can save my initials and score
-
-
-
-
-
-
-// 1. Which operator is used to assign a value to a variable?
-
-//         Your answer  
-//      
-//      
-//      
-
-
-
-// How do you round the number 7.25, to the nearest integer?
-
-//     Your answer  
-// 
-// )
-// 
-
-
-// What is the correct way to write a JavaScript array?
-
-//     Your answer  
-// 
-// 
-// 
-
-
-// How does a FOR loop start?
-
-//     Your answer  
-// 
-// 
-// 
-
-// How to write an IF statement for executing some code if "i" is NOT equal to 5?
-
-//     Your answer  
-// 
-// 
-// 
-
-// How do you write "Hello World" in an alert box?
-
-//     Your answer  
-// 
-// 
-// 
-
-
-// How  you write "Hello World" in an alert box?
-
-// alert("Hello World");    Your answer  
-// msg("Hello World");
-// alertBox("Hello World");
-// msgBox("Hello World");
-
-// How to write an IF statement for executing some code if "i" is NOT equal to 5?
-
-// if (i != 5)    Your answer  
-// if i <> 5
-// if (i <> 5)
-// if i =! 5 then
-
-// What is the correct way to write a JavaScript array?
-
-// var colors = ["red", "green", "blue"]    Your answer  
-// var colors = (1:"red", 2:"green", 3:"blue")
-// var colors = "red", "green", "blue"
-// var colors = 1 = ("red"), 2 = ("green"), 3 = ("blue")
-
-
-// How do you round the number 7.25, to the nearest integer?
-
-// Math.round(7.25)    Your answer  
-// rnd(7.25)
-// round(7.25)
-// Math.rnd(7.25)
-
-// Which operator is used to assign a value to a variable?
-
-// =    Your answer  
-// *
-// -
-// x
-
-
-// How does a FOR loop start?
-
-// for (i = 0; i <= 5; i++)    Your answer  
-// for (i = 0; i <= 5)
-// for (i <= 5; i++)
-// for i = 1 to 5
