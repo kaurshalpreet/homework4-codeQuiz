@@ -51,7 +51,7 @@ Once you click the submit button, your initials and scores are stored to the loc
 
 ---
 
-when you click the "Go Back" button, you will be redirected to the Start Quiz page.
+When you click the "Go Back" button, you will be redirected to the Start Quiz page.
 
 ![Refresh](./assets/refresh.gif)
 
