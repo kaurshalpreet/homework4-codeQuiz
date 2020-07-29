@@ -3,7 +3,7 @@
 ## Description
  This project is a timed code quiz with multiple-choice questions. This app will run in the browser and feature dynamically updated HTML and CSS powered by a JavaScript code. It will also feature a clean and polished user interface and be responsive, ensuring that it adapts to multiple screen sizes. I have learnt a lot in creating this game. This was something very new for me and I have put so much effort in learning, understanding and executing the concepts of javascript and web API.
  [The project can be accessed at my github repository](https://github.com/kaurshalpreet/homework4-codeQuiz)
- ![Homework Repository Screenshot](./assets/images/homeworkrepo.png)
+ ![Homework Repository Screenshot](./assets/repo.png)
 
  ---
 
@@ -17,7 +17,7 @@
 
 This project is a timed quiz on JavaScript fundamentals that stores high scores in local storage. You have to answer the multiple choice questions in a given time. For each wrong answer, you lose 10 secs from your timer. At the end, you will be able to save your initials with your scores to your local machine.
 
-![Getting Started!](./assets/)
+![Getting Started!](./assets/gettingStarted.gif)
 
 ---
 
@@ -27,7 +27,7 @@ This project is a timed quiz on JavaScript fundamentals that stores high scores 
 
 When you go to the Quiz Code page, you need to click on the "Start Quiz" button to start the quiz. Clicking on the button will take you to the first question of the quiz and the timer will start. The timer is set to 100 when you start the quiz and starts going down every second.
 
-![Start Quiz page](./assets/)
+![Start Quiz page](./assets/startQuiz.gif)
 
 ---
 
@@ -35,25 +35,25 @@ When you answer the first question, you are presented with the another question.
 If you answer a question correctly, it displays at the bottom for a second and disappears. 
 If you answer a question incorrectly, it displays at the bottom for a second and disappears. For every incorrect answer you lose 10 secs.
 
-![Questions](./assets/)
+![Questions](./assets/questions.gif)
 
 ---
 
 When you have answered all the questions, scores are presented and you are asked to enter you initials. 
 
-![Scores and initials](./assets/)
+![Scores and initials](./assets/scoresAndInitials.gif)
 
 ---
 
 Once you click the submit button, your initials and scores are stored to the local storage. You can also view the highscores and will have the option to clear the highscores. 
 
-![Highscore page](./assets/)
+![Highscore page](./assets/highscores.gif)
 
 ---
 
 when you click the "Go Back" button, you will be redirected to the Start Quiz page.
 
-![Refresh](./assets/)
+![Refresh](./assets/refresh.gif)
 
 ---
 
