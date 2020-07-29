@@ -1,4 +1,5 @@
 
+// Declaring Variables
 var startQuiz = document.querySelector("#startButton");
 var optionA = document.querySelector("#buttonA");
 var optionB = document.querySelector("#buttonB");
@@ -28,13 +29,14 @@ var quizQuestions = {
     correctArray : ["=", "Math.round(7.25)", "var colors = [\"red\", \"green\", \"blue\"]", "for (i = 0; i <= 5; i++)", "if (i != 5)", "alert(\"Hello World\");"],
 }
 
+// This function retrieves the stored scores and initials from the local storage and saves it in scoreAndInitialsArray. If we do not put this function, the array would become blank each time we load the page.
 init();
 
 function init() {
     // Parsing the JSON string to an object
     var storedData = JSON.parse(localStorage.getItem("highscores"));
   
-    // If stored data were retrieved from localStorage, update the scoreAndInitialsArray
+    // If stored data were retrieved from localStorage, update the scoreAndInitialsArray.
     if (storedData !== null) {
         scoreAndInitialsArray = storedData;
     }
@@ -57,8 +59,9 @@ function quizStarts1() {
         scorePlaceholder.classList.remove("hide");
 
 }
+/**************************************************************************************************************************************************/
 
-// The following function is called when on of the answer option is clicked.
+// The following function is called when one of the answer option is clicked.
 function quizStarts2() {
 
 // The following code detects the button clicked and verify if the text content of the clicked button matches the correct answer.
@@ -67,21 +70,17 @@ function quizStarts2() {
 
     if (buttonClicked.textContent === quizQuestions.correctArray[countIncrement]) {
         showResult.textContent = "Correct!";
- 
-        
     }
 
     else {
         showResult.textContent = "Wrong!";
         score = score - 10;
-   
     }
 
 // The following code calls the function when the number of Questions left is 0. 
     if (countIncrement > quizQuestions.questionArray.length-2) {
         zeroScore();
         return;
-
     }
 
    
@@ -109,6 +108,8 @@ function quizStarts2() {
 
 }
 
+/*********************************************************************************************************************************************/
+
 // The following function will show the Quiz Over and score and ask for initials.
 
 function zeroScore() {
@@ -129,6 +130,7 @@ function zeroScore() {
         var createInputBox = document.createElement("input");
         createForm.appendChild(createInputBox);
         createInputBox.style.padding = "5px";
+        createInputBox.style.marginBottom = "5px";
 
         var submitBtn = document.createElement("button");
         submitBtn.innerText = "submit";
@@ -138,7 +140,7 @@ function zeroScore() {
         createForm.appendChild(submitBtn);
 
 
-        // When submit button is clicked ************************************************************************
+        // When submit button is clicked **********************************************************************************************
         submitBtn.addEventListener("click", function(){
             event.preventDefault();
 
@@ -152,7 +154,6 @@ function zeroScore() {
 
             storeHighscores();
 
-
             // This code shows the saved Highscores and options to go back and clear the results.
              
             questions.textContent = "HighScores";
@@ -162,20 +163,25 @@ function zeroScore() {
 
             renderHighscores();
 
-
- 
         }); /**************************************************************************************************************************/
+
         clearInterval(timer);
         return;
 }
 
+/********************************************************************************************************************************************/
+
+// This function Stringify and set "highscore" key in localStorage 
+
 function storeHighscores() {
-    // Stringify and set "highscore" key in localStorage
     localStorage.setItem("highscores", JSON.stringify(scoreAndInitialsArray));
   }
+/*********************************************************************************************************************************************/
+
+// Render a new li for stored scores and created "Go Back" and "Clear Highscores" buttons.
 
 function renderHighscores() {
-  // Render a new li for stored scores
+  
   for (var i = 0; i < scoreAndInitialsArray.length; i++) {
     var scoreInit = scoreAndInitialsArray[i];
 
@@ -194,6 +200,7 @@ function renderHighscores() {
     button1.textContent = "Go Back";
     lastPage.appendChild(button1);
     button1.style.padding = "5px";
+    button1.style.marginBottom = "5px";
     button1.addEventListener("click", function() {
         window.location.reload();
 
@@ -209,14 +216,15 @@ function renderHighscores() {
         scoreAndInitialsArray =[];
         scoresList.classList.add("hide");
         viewHighscore.classList.add("hide");
-
     })
 }
 
+/********************************************************************************************************************************/
 
-
-
+// This code is for the start quiz button functionality.
 startQuiz.addEventListener("click", quizStarts1);
+
+/*********************************************************************************************************************************/
 
 // This code displays the score on the upper right corner of the Quiz page and decrement its value every second and calls the "zeroScore" function when it is 0.
 startQuiz.addEventListener("click", function(){
@@ -231,10 +239,13 @@ startQuiz.addEventListener("click", function(){
    
 });
 
-
+// This code is for the answer button functionality.
 allButtons.addEventListener("click", quizStarts2);
 
-viewHighscore.addEventListener("click", function() {
+/**********************************************************************************************************************************/
+
+// This code is for the View Highscore link placed at the top left corner.
+        viewHighscore.addEventListener("click", function() {
             event.preventDefault();
             questions.textContent = "HighScores";
             quizInstructions.classList.add("hide");
@@ -244,8 +255,6 @@ viewHighscore.addEventListener("click", function() {
             clearInterval(timer);
             scorePlaceholder.classList.add("hide");
             viewHighscore.classList.add("hide");
-
-
 });
 
 
